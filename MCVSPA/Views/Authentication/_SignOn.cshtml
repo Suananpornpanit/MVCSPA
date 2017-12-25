@@ -65,8 +65,6 @@
             /**/debugger;
             var email = $('input[id=txemail]').val();
             var sword = $('input[id=txpassword]').val();
-            alert(document.getElementById('txemail').value);
-            alert(document.getElementById('txpassword'));
             
             $.ajax({
                 url: '@Url.Action("SignIn", "Authentication")',
