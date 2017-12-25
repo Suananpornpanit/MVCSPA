@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCVSPA", "MCVSPA\MCVSPA.csproj", "{786F1CBD-E96B-4DBF-B6A5-50194117A07E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{786F1CBD-E96B-4DBF-B6A5-50194117A07E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{786F1CBD-E96B-4DBF-B6A5-50194117A07E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{786F1CBD-E96B-4DBF-B6A5-50194117A07E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{786F1CBD-E96B-4DBF-B6A5-50194117A07E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A1CC369C-91B5-452F-811B-34573C3C2288}
+	EndGlobalSection
+EndGlobal
