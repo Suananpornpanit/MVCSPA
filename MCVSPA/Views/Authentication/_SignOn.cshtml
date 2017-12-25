@@ -62,9 +62,10 @@
     var signon = function () {
             var result = $('div[id="maincontent"]');
             result.html('');
-            /**/debugger;
-            var email = $('input[id=txemail]').val();
-            var sword = $('input[id=txpassword]').val();
+            /**/
+           //debugger;
+            var email = 'admin@localhost.com';//$('input[id=txemail]').val();
+            var sword = 'admin';//$('input[id=txpassword]').val();
             
             $.ajax({
                 url: '@Url.Action("SignIn", "Authentication")',

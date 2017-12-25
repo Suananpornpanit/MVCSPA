@@ -17,8 +17,8 @@ namespace MCVSPA.Controllers
         
         public IActionResult SignIn(SignOn model)
         {
-            
-            return PartialView("_SignOn");
+            RedirectToActionResult redirectResult = new RedirectToActionResult("Index", "Dashboard",null);
+            return redirectResult;
         }
     }
 }
