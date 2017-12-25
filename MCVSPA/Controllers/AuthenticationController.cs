@@ -6,18 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MCVSPA.Controllers
 {
+    using MCVSPA.Models;
+
     public class AuthenticationController : Controller
     {
         public IActionResult Index()
         {
             return PartialView("_SignOn");
         }
-
-        [ActionName("SignOn")]
-        public IActionResult SignIn(MCVSPA.Models.SignOn obj)
+        
+        public IActionResult SignIn(SignOn model)
         {
             
-            return PartialView("Home/_SignOn");
+            return PartialView("_SignOn");
         }
     }
 }

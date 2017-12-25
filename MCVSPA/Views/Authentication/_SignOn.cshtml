@@ -26,63 +26,58 @@
                     <h3 class="panel-title">Sign on form</h3>
                 </div>
                 <div class="panel-body">
-                    <form role="form">
-                        <div class="row">
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <div class="form-group">
-                                    <label>Email: </label>
-                                </div>
-                            </div>
-                            <div class="col-xs-9 col-sm-9 col-md-9">
-                                <div class="form-group">
-                                    <input type="text" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
-                                </div>
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3">
+                            <div class="form-group right">
+                                <label>Email: </label>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <div class="form-group">
-                                    <label>Password: </label>
-                                </div>
-                            </div>
-                            <div class="col-xs-9 col-sm-9 col-md-9">
-                                <div class="form-group">
-                                    <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
-                                </div>
+                        <div class="col-xs-9 col-sm-9 col-md-9">
+                            <div class="form-group">
+                                <input type="text" id="txemail" class="form-control input-sm" placeholder="Email Address">
                             </div>
                         </div>
-                        <input type="button" value="Sign On" onclick="signon();" class="btn btn-info btn-block">
-                    </form>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3">
+                            <div class="form-group right">
+                                <label>Password: </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-9 col-sm-9 col-md-9">
+                            <div class="form-group">
+                                <input type="password" id="txpassword" class="form-control input-sm" placeholder="Password">
+                            </div>
+                        </div>
+                    </div>
+                    <input type="button" value="Sign On" onclick="signon();" class="btn btn-info btn-block">
                 </div>
             </div>
         </div>
     </div>
 </div>
 @Html.Partial("_Copyright")
+<script src="~/lib/jquery/dist/jquery.js"></script>
 <script>
     var signon = function () {
             var result = $('div[id="maincontent"]');
             result.html('');
-            /**/
-            debugger;
-            var email = $('input[id=email]');
-            var password = $('input[id=password]');
-            var obj = {
-                "UserOrEmail": email.val
-                , "Sword": password.val
-            }
-
-            //alert(SignOn);
-            //    new SignOn();
-            //obj.UserOrEmail = $('input[id=email]').val();
-            //obj.Sword = $('input[id=password]').val();
-            /**/
+            /**/debugger;
+            var email = $('input[id=txemail]').val();
+            var sword = $('input[id=txpassword]').val();
+            alert(document.getElementById('txemail').value);
+            alert(document.getElementById('txpassword'));
+            
             $.ajax({
-                url: '@Url.Action("SignOn", "Authentication")',
+                url: '@Url.Action("SignIn", "Authentication")',
                 type: "POST",
                 headers: 'Token',
                 cache: false,
-                data: obj,
+                data: {
+                    email: email,
+                    sword: sword
+                },
+                traditional: true,
                 success: function (data) {
                     result.html(data)
                  },

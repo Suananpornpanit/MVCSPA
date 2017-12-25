@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace MCVSPA.Models
 {
+    [Serializable]
     public class SignOn
     {
-        public string UserOrEmail { get; set; }
-        public string Sword { get; set; }
+        public string email { get; set; }
+        public string sword { get; set; }
     }
 }
