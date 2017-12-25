@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewData["Title"] = "_SignOn";
+}
+<style>
+    .centered-form {
+        margin-top: 60px;
+    }
+
+        .centered-form .panel {
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+        }
+
+    label.label-floatlabel {
+        font-weight: bold;
+        color: #46b8da;
+        font-size: 11px;
+    }
+</style>
+<div class="container">
+    <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Sign on form</h3>
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                <div class="form-group">
+                                    <label>Email: </label>
+                                </div>
+                            </div>
+                            <div class="col-xs-9 col-sm-9 col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                <div class="form-group">
+                                    <label>Password: </label>
+                                </div>
+                            </div>
+                            <div class="col-xs-9 col-sm-9 col-md-9">
+                                <div class="form-group">
+                                    <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                                </div>
+                            </div>
+                        </div>
+                        <input type="button" value="Sign On" onclick="signon();" class="btn btn-info btn-block">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("_Copyright")
+<script>
+    var signon = function () {
+            var result = $('div[id="maincontent"]');
+            result.html('');
+            /**/
+            debugger;
+            var email = $('input[id=email]');
+            var password = $('input[id=password]');
+            var obj = {
+                "UserOrEmail": email.val
+                , "Sword": password.val
+            }
+
+            //alert(SignOn);
+            //    new SignOn();
+            //obj.UserOrEmail = $('input[id=email]').val();
+            //obj.Sword = $('input[id=password]').val();
+            /**/
+            $.ajax({
+                url: '@Url.Action("SignOn", "Authentication")',
+                type: "POST",
+                headers: 'Token',
+                cache: false,
+                data: obj,
+                success: function (data) {
+                    result.html(data)
+                 },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.responseText);
+                }
+            });
+         };
+</script>

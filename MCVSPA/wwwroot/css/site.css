@@ -1,7 +1,22 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿/*body {
+    
+}*/
+
+
+body {
+    padding-top: 10%;
+    padding-bottom: 5%;
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(radial, center center, 0, center center, 460, from(#1a82f7), to(#2F2727));
+    /* Safari 5.1+, Chrome 10+ */
+    background: -webkit-radial-gradient(circle, #1a82f7, #2F2727);
+    /* Firefox 3.6+ */
+    background: -moz-radial-gradient(circle, #1a82f7, #2F2727);
+    /* IE 10 */
+    background: -ms-radial-gradient(circle, #1a82f7, #2F2727);
+    height: 600px;
 }
+
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */

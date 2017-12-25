@@ -15,36 +15,6 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
-</head>
-<body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">MCVSPA</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2560 - MCVSPA</p>
-        </footer>
-    </div>
-
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
@@ -65,7 +35,95 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a onclick="javascrpt: index();" class="navbar-brand">MCVSPA</a>
+            </div>
+            <div class="navbar-collapse collapse" style="cursor:pointer;">
+                <ul class="nav navbar-nav">
+                    <li><a onclick="javascrpt: index();">Home</a></li>
+                    <li><a onclick="javascrpt: about();">About</a></li>
+                    <li><a onclick="javascrpt: contact();">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="maincontent" class="container body-content">
+        @RenderBody()
+    </div>
+    <script>
+        var index = function () {
+            var result = $('div[id="maincontent"]');
+            result.html('');
+            /**/
+            var obj = {};
+            /**/
+            $.ajax({
+                url: '@Url.Action("Index","Authentication")',
+                type: "GET",
+                headers: 'Token',
+                cache: false,
+                data: obj,
+                success: function (data) {
+                    result.html(data)
+                 },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.responseText);
+                }
+            });
+         };
+        var contact = function () {
+            var result = $('div[id="maincontent"]');
+            result.html('');
+            /**/
+            var obj = {};
+            /**/
+            $.ajax({
+                url: '@Url.Action("Contact","Home")',
+                type: "GET",
+                headers: 'Token',
+                cache: false,
+                data: obj,
+                success: function (data) {
+                    result.html(data)
+                 },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.responseText);
+                }
+            });
+        };
 
+
+        var about = function () {
+            var result = $('div[id="maincontent"]');
+            result.html('');
+            /**/
+            var obj = {};
+            /**/
+            $.ajax({
+                url: '@Url.Action("About","Home")',
+                type: "GET",
+                headers: 'Token',
+                cache: false,
+                data: obj,
+                success: function (data) {
+                    result.html(data)
+                 },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.responseText);
+                }
+            });
+         };
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
